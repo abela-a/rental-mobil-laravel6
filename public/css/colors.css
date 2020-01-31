@@ -1,0 +1,10 @@
+.bg-orange {
+    background-color: #ff8800 !important;
+}
+.text-orange {
+    color: #ff8800 !important;
+}
+.text-active {
+    font-weight: 600;
+    color: #fff !important;
+}
