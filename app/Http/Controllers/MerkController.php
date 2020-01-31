@@ -27,7 +27,7 @@ class MerkController extends Controller
         Merk::where('id', $merk->id)->update(['nama_merk' => $request->nama_merk]);
         return redirect('admin/merk')->with('alert', 'Data merk berhasil diubah!');
     }
-    public function destroy(Request $request, Merk $merk)
+    public function destroy(Merk $merk)
     {
         Merk::destroy('id', $merk->id);
         return redirect('admin/merk')->with('alert', 'Data merk berhasil dihapus!');
