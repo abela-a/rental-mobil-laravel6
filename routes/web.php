@@ -29,6 +29,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::patch('{merk}', 'MerkController@update')->name('admin.merk.edit');
     Route::delete('{merk}', 'MerkController@destroy')->name('admin.merk.hapus');
   });
+  // TIPE
+  Route::group(['prefix' => 'tipe'], function () {
+    Route::get('', 'TipeController@index')->name('admin.tipe');
+    Route::post('', 'TipeController@store')->name('admin.tipe.simpan');
+    Route::patch('{tipe}', 'TipeController@update')->name('admin.tipe.edit');
+    Route::delete('{tipe}', 'TipeController@destroy')->name('admin.tipe.hapus');
+  });
 });
 
 // KARYAWAN
