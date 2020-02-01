@@ -44,6 +44,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::patch('{mobil}', 'MobilController@update')->name('admin.mobil.edit');
     Route::delete('{mobil}', 'MobilController@destroy')->name('admin.mobil.hapus');
   });
+  // SOPIR
+  Route::group(['prefix' => 'sopir'], function () {
+    Route::get('', 'SopirController@index')->name('admin.sopir');
+    Route::post('', 'SopirController@store')->name('admin.sopir.simpan');
+    Route::patch('{sopir}', 'SopirController@update')->name('admin.sopir.edit');
+    Route::delete('{sopir}', 'SopirController@destroy')->name('admin.sopir.hapus');
+  });
 });
 
 // KARYAWAN

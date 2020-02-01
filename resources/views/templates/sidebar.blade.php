@@ -48,6 +48,9 @@
     if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
     $kendaraan = 'active';
     }
+    if(Request::is('*sopir')){
+    $sopir = 'active';
+    }
     if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
     $show_kendaraan = 'show';
     }
@@ -82,8 +85,8 @@
           <li> <a href="#">Tipe</a> </li>
         </ul>
       </li>
-      <li>
-        <a href="#"><span class="fa fa-fw text-white fa-user-tie mr-3"></span>Data Sopir</a>
+      <li class="{{ $sopir ?? '' }}">
+        <a href="{{ route('admin.sopir') }}"><span class="fa fa-fw text-white fa-user-tie mr-3"></span>Data Sopir</a>
       </li>
       <li>
         <a href="#akun" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span
