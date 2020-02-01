@@ -69,32 +69,6 @@
         <input type="text" class="form-control" disabled value="{{ $m->nama_merk }} {{ $m->nama_tipe }}">
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>Jenis Mobil</label>
-        <select name="jenis_mobil" id="jenis_mobil" class="form-control @error('jenis_mobil') is-invalid @enderror">
-          <option selected disabled>Pilih Jenis</option>
-          <option @if($m->jenis_mobil == 'SUV') selected @endif >SUV</option>
-          <option @if($m->jenis_mobil == 'MPV') selected @endif >MPV</option>
-          <option @if($m->jenis_mobil == 'City') selected @endif >City</option>
-        </select>
-        <div class="invalid-feedback">
-          jenis mobil harus dipilih
-        </div>
-      </div>
-      <div class="form-group col-md-6">
-        <label>Tipe Transmisi</label>
-        <select name="transmisi" id="transmisi" class="form-control @error('transmisi') is-invalid @enderror">
-          <option selected disabled>Pilih Transmisi</option>
-          <option @if($m->transmisi == 'Manual') selected @endif >Manual</option>
-          <option @if($m->transmisi == 'Matic') selected @endif >Matic</option>
-          <option @if($m->transmisi == 'CVT') selected @endif >CVT</option>
-        </select>
-        <div class="invalid-feedback">
-          tipe transmisi harus pilih
-        </div>
-      </div>
-    </div>
     <div class="form-group">
       <label>Harga Sewa / Hari</label>
       <div class="input-group @error('harga_sewa') is-invalid @enderror">

@@ -55,8 +55,6 @@ class MobilController extends Controller
     public function update(Request $request, Mobil $mobil)
     {
         $request->validate([
-            'jenis_mobil' => 'required',
-            'transmisi' => 'required',
             'harga_sewa' => 'required',
             'foto_mobil' => 'file|image|mimes:jpg,jpeg,png|max:1000',
         ]);
@@ -71,8 +69,6 @@ class MobilController extends Controller
         }
 
         Mobil::where('id', $mobil->id)->update([
-            'jenis_mobil' => $request->jenis_mobil,
-            'transmisi' => $request->transmisi,
             'harga_sewa' => preg_replace('/\D/', '', $request->harga_sewa),
             'foto_mobil' => $foto_mobil
         ]);
