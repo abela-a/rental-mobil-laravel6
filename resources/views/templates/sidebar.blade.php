@@ -42,17 +42,23 @@
     </div>
 
     @php
-    if(Request::is('*admin') || Request::is('*karyawan') || Request::is('*pelanggan')){
+    if(Request::is('admin') || Request::is('karyawan') || Request::is('pelanggan')){
     $dashboard = 'active';
     }
     if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
     $kendaraan = 'active';
+    }
+    if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
+    $akun = 'active';
     }
     if(Request::is('*sopir')){
     $sopir = 'active';
     }
     if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
     $show_kendaraan = 'show';
+    }
+    if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
+    $show_akun = 'show';
     }
     @endphp
 
@@ -88,13 +94,16 @@
       <li class="{{ $sopir ?? '' }}">
         <a href="{{ route('admin.sopir') }}"><span class="fa fa-fw text-white fa-user-tie mr-3"></span>Data Sopir</a>
       </li>
-      <li>
+      <li class="{{ $akun ?? '' }}">
         <a href="#akun" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span
             class="fa fa-fw text-white fa-users mr-3"></span>Data Akun</a>
-        <ul class="collapse list-unstyled" id="akun" data-parent="#accordion-sidebar">
-          <li> <a href="#">Pelanggan</a> </li>
-          <li> <a href="#">Karyawan</a> </li>
-          <li> <a href="#">Manajemen Akses</a> </li>
+        <ul class="collapse {{ $show_akun ?? '' }} list-unstyled" id="akun" data-parent="#accordion-sidebar">
+          <li> <a href="{{ route('admin.pelanggan') }}"
+              class="{{ Request::is('*pelanggan') ? 'text-active' : '' }}">Pelanggan</a> </li>
+          <li> <a href="{{ route('admin.karyawan') }}"
+              class="{{ Request::is('*karyawan') ? 'text-active' : '' }}">Karyawan</a> </li>
+          <li> <a href="{{ route('admin.role') }}" class="{{ Request::is('*role') ? 'text-active' : '' }}">Manajemen
+              Akses</a> </li>
         </ul>
       </li>
       <li>

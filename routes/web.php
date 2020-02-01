@@ -51,6 +51,17 @@ Route::group(['prefix' => 'admin'], function () {
     Route::patch('{sopir}', 'SopirController@update')->name('admin.sopir.edit');
     Route::delete('{sopir}', 'SopirController@destroy')->name('admin.sopir.hapus');
   });
+  // AKUN
+  Route::group(['prefix' => 'akun'], function () {
+    Route::get('pelanggan', 'AccountController@pelanggan')->name('admin.pelanggan');
+    Route::get('karyawan', 'AccountController@karyawan')->name('admin.karyawan');
+    Route::get('role', 'AccountController@role')->name('admin.role');
+    // AKSI
+    Route::post('', 'AccountController@store')->name('admin.akun.simpan');
+    Route::patch('{akun}', 'AccountController@update')->name('admin.akun.edit');
+    Route::patch('role/{akun}', 'AccountController@role_update')->name('admin.akun.role');
+    Route::delete('{akun}', 'AccountController@destroy')->name('admin.akun.hapus');
+  });
 });
 
 // KARYAWAN
