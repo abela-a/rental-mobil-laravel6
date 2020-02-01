@@ -1,5 +1,5 @@
 <div class="modal fade" id="{{ $id_modal }}" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog">
     <div class="modal-content">
       <form action="{{ $form_action }}" method="post" enctype="multipart/form-data">
         <div class="modal-header">

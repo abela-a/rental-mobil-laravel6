@@ -70,7 +70,8 @@
           <li>
             <a href="{{ route('admin.tipe') }}" class="{{ Request::is('*tipe') ? 'text-active' : '' }}">Tipe</a>
           </li>
-          <li> <a href="#">Mobil</a> </li>
+          <li> <a href="{{ route('admin.mobil') }}" class="{{ Request::is('*mobil') ? 'text-active' : '' }}">Mobil</a>
+          </li>
         </ul>
       </li>
       <li>

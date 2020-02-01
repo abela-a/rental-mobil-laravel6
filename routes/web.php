@@ -36,6 +36,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::patch('{tipe}', 'TipeController@update')->name('admin.tipe.edit');
     Route::delete('{tipe}', 'TipeController@destroy')->name('admin.tipe.hapus');
   });
+  // MOBIL
+  Route::group(['prefix' => 'mobil'], function () {
+    Route::get('', 'MobilController@index')->name('admin.mobil');
+    Route::get('getTipe/{tipe}', 'MobilController@getTipe');
+    Route::post('', 'MobilController@store')->name('admin.mobil.simpan');
+    Route::patch('{mobil}', 'MobilController@update')->name('admin.mobil.edit');
+    Route::delete('{mobil}', 'MobilController@destroy')->name('admin.mobil.hapus');
+  });
 });
 
 // KARYAWAN

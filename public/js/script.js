@@ -1,6 +1,9 @@
 $(document).ready(function() {
-    //DATA TABLES
-    $("#tolong").DataTable();
+    // MASK UANG
+    $(".uang").mask("0.000.000.000", { reverse: true });
+    // MASK NO TELP
+    $(".telp").mask("0000-0000-00000");
+
     // TOOLTIPS
     $("[data-toggle=tooltip]").tooltip();
 
@@ -16,11 +19,6 @@ $(document).ready(function() {
             .html(filename);
     });
 
-    // MASK UANG
-    $(".uang").mask("0.000.000.000", { reverse: true });
-    // MASK NO TELP
-    $(".telp").mask("0000-0000-00000");
-
     // SHOWHIDEPASS
     $("#showhidepass a").on("click", function(event) {
         event.preventDefault();
@@ -34,4 +32,7 @@ $(document).ready(function() {
             $("#showhidepass i").addClass("fa-eye-slash");
         }
     });
+
+    //DATA TABLES
+    $("#tolong").DataTable();
 });

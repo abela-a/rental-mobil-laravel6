@@ -1,6 +1,3 @@
-body.modal-open {
-    overflow: hidden;
-}
 #header {
     font-family: "nature beauty personal use";
     font-size: 43px;
@@ -16,6 +13,9 @@ body.modal-open {
     margin-right: 17px;
 }
 .action-td {
+    width: 105px !important;
+}
+.action-td-details {
     width: 150px !important;
 }
 .first-td {
