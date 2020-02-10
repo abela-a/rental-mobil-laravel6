@@ -17,11 +17,13 @@
 
 <body class="{{ Request::is('login') || Request::is('register') ? 'bg-light' : '' }}">
 
-  @if (!Request::is('login') && !Request::is('register'))
+  @if (!Request::is('login') && !Request::is('register') && !Request::is('/'))
   <div class="wrapper d-flex align-items-stretch">
     @include('templates.sidebar')
     @include('templates.content')
   </div>
+  @elseif(Request::is('/'))
+  @yield('home')
   @endif
 
   @yield('auth')
