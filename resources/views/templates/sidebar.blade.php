@@ -20,10 +20,20 @@
         <a href="#profile" data-toggle="collapse" class="text-white text-decoration-none">
           <div class="p-2">
             <div class="media">
-              <img src="{{ asset('img/fotouser/default.png') }}" class="mr-3 border rounded" width="45" height="45">
+              <img src="{{ asset('img/fotouser') }}/{{ Auth::user()->foto }}" class="mr-3 border rounded" width="45"
+                height="45">
               <div class="media-body">
-                <h6 class="my-0">Abel Ardhana S</h6>
-                <span class="badge badge-info">Admin</span>
+                <h6 class="my-0">{{ Auth::user()->nama }}</h6>
+                @php
+                if(Auth::user()->role_id === 1){
+                $role = 'Admin';
+                } elseif(Auth::user()->role_id === 2){
+                $role = 'Karyawan';
+                } else {
+                $role = 'Pelanggan';
+                }
+                @endphp
+                <span class="badge badge-info">{{ $role }}</span>
               </div>
             </div>
           </div>
@@ -34,7 +44,8 @@
               <button class="btn btn-sm btn-primary btn-block">Edit</button>
             </div>
             <div class="col">
-              <button class="btn btn-sm btn-danger btn-block">Logout</button>
+              <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display:none">@csrf</form>
+              <button class="btn btn-sm btn-danger btn-block" onclick="$('#logout-form').submit()">Logout</button>
             </div>
           </div>
         </div>

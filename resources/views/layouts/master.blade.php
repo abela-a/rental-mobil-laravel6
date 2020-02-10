@@ -15,14 +15,16 @@
   @yield('style')
 </head>
 
-<body>
+<body class="{{ Request::is('login') || Request::is('register') ? 'bg-light' : '' }}">
 
-  @if (!Request::is('login')||!Request::is('register')||!Request::is('home'))
+  @if (!Request::is('login') && !Request::is('register'))
   <div class="wrapper d-flex align-items-stretch">
     @include('templates.sidebar')
     @include('templates.content')
   </div>
   @endif
+
+  @yield('auth')
 
   <div class="script">
     <script src="{{ asset('vendor/bootstrap/js/jquery.min.js') }}"></script>

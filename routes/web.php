@@ -18,7 +18,7 @@ Auth::routes();
 Route::view('/', 'welcome');
 
 // ADMIN
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
   // PROFILE
   Route::get('', 'AdminMasterController@index')->name('admin.dashboard');
   Route::get('profile', 'AdminMasterController@profile')->name('admin.profile');
@@ -65,14 +65,14 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 // KARYAWAN
-Route::group(['prefix' => 'karyawan'], function () {
+Route::group(['prefix' => 'karyawan', 'middleware' => ['auth', 'karyawan']], function () {
   // PROFILE
   Route::get('', 'KaryawanMasterController@index')->name('karyawan.dashboard');
   Route::get('profile', 'KaryawanMasterController@profile')->name('karyawan.profile');
 });
 
 // PELANGGAN
-Route::group(['prefix' => 'pelanggan'], function () {
+Route::group(['prefix' => 'pelanggan', 'middleware' => ['auth', 'pelanggan']], function () {
   // PROFILE
   Route::get('', 'PelangganMasterController@index')->name('pelanggan.dashboard');
   Route::get('profile', 'PelangganMasterController@profile')->name('pelanggan.profile');
