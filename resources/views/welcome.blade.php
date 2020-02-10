@@ -18,12 +18,18 @@
         <h1 id="header" class="text-center">Homepage</h1>
       </div>
       <div class="row no-gutters mt-n4">
+        @auth
+        <div class="col">
+          <a href="{{ route('login') }}" class="btn btn-primary btn-block">Dashboard</a>
+        </div>
+        @else
         <div class="col mr-2">
           <a href="{{ route('login') }}" class="btn btn-secondary btn-block">Login</a>
         </div>
         <div class="col">
           <a href="{{ route('register') }}" class="btn btn-secondary btn-block">Register</a>
         </div>
+        @endauth
       </div>
     </div>
   </div>
