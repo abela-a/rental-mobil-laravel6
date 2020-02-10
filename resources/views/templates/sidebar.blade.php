@@ -88,7 +88,7 @@
             class="fa fa-fw text-white fa-dollar-sign mr-3"></span>Transaksi</a>
         <ul class="collapse list-unstyled" id="transaksi" data-parent="#accordion-sidebar">
           <li> <a href="#">Pemesanan</a> </li>
-          <li> <a href="#">Tipe</a> </li>
+          <li> <a href="#">Transaksi</a> </li>
         </ul>
       </li>
       <li class="{{ $sopir ?? '' }}">
