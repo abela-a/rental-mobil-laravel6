@@ -1,5 +1,5 @@
-<div id="content" class="p-4 p-md-5 pt-5">
-  <div class="px-4 py-3">
+<div id="content" class="py-md-5 mx-md-4 pt-5">
+  <div class="px-4 pt-3 pb-0 mt-5">
     <div class="clearfix">
       <div class="float-left">
         <h1 class="mt-1" id="header">

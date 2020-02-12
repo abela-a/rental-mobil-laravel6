@@ -21,6 +21,9 @@
 .first-td {
     width: 15px !important;
 }
+.rounded-lg {
+    border-radius: 15px !important;
+}
 /* 
 SCROLLBAR
 */

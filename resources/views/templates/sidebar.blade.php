@@ -1,7 +1,7 @@
 <nav id="sidebar">
   <div class="custom-menu">
     <button type="button" id="sidebarCollapse" class="btn btn-primary">
-      <i class="fa fa-angle-right"></i>
+      <i class="fa fa-bars"></i>
       <span class="sr-only">Toggle Menu</span>
     </button>
   </div>
@@ -62,6 +62,9 @@
     if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
     $akun = 'active';
     }
+    if(Request::is('*pemesanan') || Request::is('*transaksi')){
+    $transaksi = 'active';
+    }
     if(Request::is('*sopir')){
     $sopir = 'active';
     }
@@ -70,6 +73,9 @@
     }
     if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
     $show_akun = 'show';
+    }
+    if(Request::is('*pemesanan') || Request::is('*transaksi')){
+    $show_transaksi = 'show';
     }
     @endphp
 
@@ -94,12 +100,14 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li class="{{ $transaksi ?? '' }}">
         <a href="#transaksi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span
             class="fa fa-fw text-white fa-dollar-sign mr-3"></span>Transaksi</a>
-        <ul class="collapse list-unstyled" id="transaksi" data-parent="#accordion-sidebar">
-          <li> <a href="#">Pemesanan</a> </li>
-          <li> <a href="#">Transaksi</a> </li>
+        <ul class="collapse list-unstyled {{ $show_transaksi ?? '' }}" id="transaksi" data-parent="#accordion-sidebar">
+          <li> <a href="{{ route('admin.pemesanan') }}"
+              class="{{ Request::is('*pemesanan') ? 'text-active' : '' }}">Pemesanan</a> </li>
+          <li> <a href="{{ route('admin.transaksi') }}"
+              class="{{ Request::is('*transaksi') ? 'text-active' : '' }}">Transaksi</a> </li>
         </ul>
       </li>
       <li class="{{ $sopir ?? '' }}">
