@@ -12,6 +12,9 @@
 #sidebar ul li .dropdown-toggle::after {
     margin-right: 17px;
 }
+#navbar {
+    height: 105px;
+}
 .action-td {
     width: 105px !important;
 }

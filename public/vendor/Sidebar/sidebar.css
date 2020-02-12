@@ -10726,6 +10726,7 @@ h5,
 }
 
 #sidebar {
+    height: 100vh;
     min-width: 270px;
     max-width: 270px;
     background: #3445b4;
@@ -10734,7 +10735,6 @@ h5,
     -o-transition: all 0.3s;
     transition: all 0.3s;
     position: relative;
-    border-radius: 0 30px 30px 0;
 }
 #sidebar .h6 {
     color: #fff;
@@ -10795,8 +10795,9 @@ h5,
 #sidebar .custom-menu {
     display: inline-block;
     position: absolute;
+    z-index: 1;
     top: 35px;
-    right: -55px;
+    right: 0px;
     margin-right: -20px;
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
@@ -10834,7 +10835,7 @@ h5,
     /* -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg); */
-    background: #3445b4;
+    background: #283799;
     border-radius: 10px;
 }
 #sidebar .custom-menu .btn.btn-primary:hover,
@@ -10864,6 +10865,8 @@ a[data-toggle="collapse"] {
 }
 
 #content {
+    height: 100vh;
+    overflow-y: auto;
     width: 100%;
     padding: 0;
     min-height: 100vh;

@@ -33,6 +33,7 @@
     <script src="{{ asset('vendor/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/jquery.mask.min.js') }}"></script>
+    <script src="{{ asset('vendor/moment.js/moment.js') }}"></script>
     <script src="{{ asset('vendor/datatables/datatables.js') }}"></script>
     {{-- MY SCRIPT --}}
     <script src="{{ asset('vendor/sidebar/sidebar.js') }}"></script>
