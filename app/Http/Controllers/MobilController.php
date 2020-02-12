@@ -48,7 +48,8 @@ class MobilController extends Controller
             'jenis_mobil' => $request->jenis_mobil,
             'transmisi' => $request->transmisi,
             'harga_sewa' => preg_replace('/\D/', '', $request->harga_sewa),
-            'foto_mobil' => $foto_mobil
+            'foto_mobil' => $foto_mobil,
+            'status_rental' => 'Kosong'
         ]);
         return redirect('admin/mobil')->with('alert', 'Data mobil berhasil ditambahkan!');
     }
