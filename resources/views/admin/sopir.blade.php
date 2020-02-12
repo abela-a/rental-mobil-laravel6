@@ -25,7 +25,16 @@
     <tr>
       <th scope="row" class="first-td">{{ $loop->iteration }}</th>
       <td>{{ $s->nik }}</td>
-      <td>{{ $s->nama_sopir }}</td>
+      <td>
+        {{ $s->nama_sopir }}
+        @if ($s->status_sopir == 'Sibuk')
+        <span class="badge badge-danger">{{ $s->status_sopir }}</span>
+        @elseif($s->status_sopir == 'Dipesan')
+        <span class="badge badge-warning">{{ $s->status_sopir }}</span>
+        @else
+        <span class="badge badge-success">{{ $s->status_sopir }}</span>
+        @endif
+      </td>
       <td>{{ $s->no_hp }}</td>
       <td>Rp. <span class="uang">{{ $s->tarif_perhari }}</span>,-</td>
       <td class="action-td-details">
