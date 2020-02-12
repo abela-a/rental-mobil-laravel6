@@ -19,8 +19,7 @@
         <form action="{{ route('register') }}" method="post">
           @csrf
           <div class="form-group">
-            <label>Nama Lengkap</label>
-            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" autofocus
+            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" autofocus placeholder="Nama lengkap"
               value="{{ old('nama') }}">
             <div class="invalid-feedback">
               @error('nama')
@@ -29,8 +28,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label>NIK</label>
-            <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik" autofocus
+            <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik"  placeholder="NIK"
               value="{{ old('nik') }}">
             <div class="invalid-feedback">
               @error('nik')
@@ -39,8 +37,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Nomor Ponsel</label>
-            <input type="text" class="form-control telp @error('nohp') is-invalid @enderror" name="nohp" autofocus
+            <input type="text" class="form-control telp @error('nohp') is-invalid @enderror" name="nohp"  placeholder="Nomor Ponsel"
               value="{{ old('nohp') }}">
             <div class="invalid-feedback">
               @error('nohp')
@@ -49,8 +46,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" autofocus
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"  placeholder="Email"
               value="{{ old('email') }}">
             <div class="invalid-feedback">
               @error('email')
@@ -59,8 +55,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="Password">
             <div class="invalid-feedback">
               @error('password')
               {{ $message }}

@@ -7,7 +7,7 @@
 @endsection
 
 @section('auth')
-<div class="row no-gutters justify-content-center">
+<div class="row no-gutters justify-content-center mt-5">
   <div class="col-md-5 my-5">
     <div class="card border-0">
       <div class="card-body p-5">
@@ -21,9 +21,8 @@
         <form action="{{ route('login') }}" method="post">
           @csrf
           <div class="form-group">
-            <label>Email</label>
             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" autofocus
-              value="{{ old('email') }}">
+              placeholder="Email" value="{{ old('email') }}">
             <div class="invalid-feedback">
               @error('email')
               {{ $message }}
@@ -31,8 +30,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+              placeholder="Password">
             <div class="invalid-feedback">
               @error('password')
               {{ $message }}
