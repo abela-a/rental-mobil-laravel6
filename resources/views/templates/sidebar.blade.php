@@ -5,7 +5,7 @@ $dashboard = 'active';
 if(Request::is($role.'/merk') || Request::is($role.'/tipe') || Request::is($role.'/mobil')){
 $kendaraan = 'active';
 }
-if(Request::is($role.'/pelanggan') || Request::is($role.'/karyawan') || Request::is($role.'/role')){
+if(Request::is($role.'/akun/pelanggan') || Request::is($role.'/akun/karyawan') || Request::is($role.'/akun/role')){
 $akun = 'active';
 }
 if(Request::is($role.'/pemesanan') || Request::is($role.'/transaksi*')){
@@ -20,7 +20,7 @@ $laporan = 'active';
 if(Request::is($role.'/merk') || Request::is($role.'/tipe') || Request::is($role.'/mobil')){
 $show_kendaraan = 'show';
 }
-if(Request::is($role.'/pelanggan') || Request::is($role.'/karyawan') || Request::is($role.'/role')){
+if(Request::is($role.'/akun/pelanggan') || Request::is($role.'/akun/karyawan') || Request::is($role.'/akun/role')){
 $show_akun = 'show';
 }
 if(Request::is($role.'/pemesanan') || Request::is($role.'/transaksi')){
@@ -116,11 +116,11 @@ $show_transaksi = 'show';
             class="fa fa-fw text-white fa-users mr-3"></span>Data Akun</a>
         <ul class="collapse {{ $show_akun ?? '' }} list-unstyled" id="akun" data-parent="#accordion-sidebar">
           <li> <a href="{{ route($role.'.pelanggan') }}"
-              class="{{ Request::is($role.'/pelanggan') ? 'text-active' : '' }}">Pelanggan</a> </li>
+              class="{{ Request::is($role.'/akun/pelanggan') ? 'text-active' : '' }}">Pelanggan</a> </li>
           <li> <a href="{{ route($role.'.karyawan') }}"
-              class="{{ Request::is($role.'/karyawan') ? 'text-active' : '' }}">Karyawan</a> </li>
+              class="{{ Request::is($role.'/akun/karyawan') ? 'text-active' : '' }}">Karyawan</a> </li>
           <li> <a href="{{ route($role.'.role') }}"
-              class="{{ Request::is($role.'/role') ? 'text-active' : '' }}">Manajemen
+              class="{{ Request::is($role.'/akun/role') ? 'text-active' : '' }}">Manajemen
               Akses</a> </li>
         </ul>
       </li>

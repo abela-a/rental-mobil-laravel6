@@ -35,7 +35,7 @@
         <span class="badge badge-success">{{ $s->status_sopir }}</span>
         @endif
       </td>
-      <td>{{ $s->no_hp }}</td>
+      <td><span class="telp">{{ $s->no_hp }}</span></td>
       <td>Rp. <span class="uang">{{ $s->tarif_perhari }}</span>,-</td>
       <td class="action-td-details">
         <button class="btn btn-sm btn-secondary" data-target="#detail-{{ $s->id }}" data-toggle="modal">
