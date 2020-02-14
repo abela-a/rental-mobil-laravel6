@@ -62,6 +62,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::patch('role/{akun}', 'AccountController@role_update')->name('admin.akun.role');
     Route::delete('{akun}', 'AccountController@destroy')->name('admin.akun.hapus');
   });
+  // PEMESANAN
+  Route::group(['prefix' => 'pemesanan'], function () {
+    Route::get('', 'TransaksiController@pemesanan')->name('admin.pemesanan');
+    Route::post('', 'TransaksiController@memesan')->name('admin.memesan');
+    Route::patch('ambil/{pemesanan}/{mobil}/{sopir}', 'TransaksiController@pemesananAmbil')->name('admin.pemesanan.ambil');
+    Route::patch('batal/{pemesanan}/{mobil}/{sopir}', 'TransaksiController@pemesananBatal')->name('admin.pemesanan.batal');
+  });
+  // TRANSAKSI
+  Route::group(['prefix' => 'transaksi'], function () {
+    Route::get('', 'TransaksiController@transaksi')->name('admin.transaksi');
+    Route::get('selesai/{transaksi}', 'TransaksiController@transaksiSelesaiForm')->name('admin.transaksi.selesai-form');
+    Route::patch('selesai/{transaksi}', 'TransaksiController@transaksiSelesai')->name('admin.transaksi.selesai');
+  });
 });
 
 // KARYAWAN

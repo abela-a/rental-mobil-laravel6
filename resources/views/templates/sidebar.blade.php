@@ -62,7 +62,7 @@
     if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
     $akun = 'active';
     }
-    if(Request::is('*pemesanan') || Request::is('*transaksi')){
+    if(Request::is('*pemesanan') || Request::is('*transaksi*')){
     $transaksi = 'active';
     }
     if(Request::is('*sopir')){
