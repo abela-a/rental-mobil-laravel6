@@ -72,3 +72,30 @@ MEDIA PRINT
         font-size: 10px;
     }
 }
+
+/* PRINT */
+@media print {
+    @page {
+        size: landscape;
+        width: auto;
+        margin: 1px;
+    }
+
+    #sidebar,
+    #header,
+    #no-print {
+        display: none;
+    }
+
+    body {
+        background-color: #fff !important;
+    }
+
+    #print {
+        display: block !important;
+    }
+
+    #print-kwitansi {
+        margin-top: -40px;
+    }
+}

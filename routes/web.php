@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -75,6 +76,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('selesai/{transaksi}', 'TransaksiController@transaksiSelesaiForm')->name('admin.transaksi.selesai-form');
     Route::patch('selesai/{transaksi}', 'TransaksiController@transaksiSelesai')->name('admin.transaksi.selesai');
   });
+  // LAPORAN
+  Route::group(['prefix' => 'laporan'], function () {
+    Route::get('', 'LaporanController@index')->name('admin.laporan');
+    Route::get('transaksi', 'LaporanController@transaksi')->name('admin.laporan.transaksi');
+    Route::get('kendaraan', 'LaporanController@kendaraan')->name('admin.laporan.kendaraan');
+    Route::get('sopir', 'LaporanController@sopir')->name('admin.laporan.sopir');
+    Route::get('karyawan', 'LaporanController@karyawan')->name('admin.laporan.karyawan');
+    Route::get('pelanggan', 'LaporanController@pelanggan')->name('admin.laporan.pelanggan');
+    Route::get('kwitansi/{no_transaksi}', 'LaporanController@kwitansi')->name('admin.laporan.kwitansi');
+  });
 });
 
 // KARYAWAN
@@ -89,4 +100,6 @@ Route::group(['prefix' => 'pelanggan', 'middleware' => ['auth', 'pelanggan']], f
   // PROFILE
   Route::get('', 'PelangganMasterController@index')->name('pelanggan.dashboard');
   Route::get('profile', 'PelangganMasterController@profile')->name('pelanggan.profile');
+  // LAPORAN
+  Route::get('laporan/kwitansi/{no_transaksi}', 'LaporanController@kwitansi')->name('pelanggan.laporan.kwitansi');
 });

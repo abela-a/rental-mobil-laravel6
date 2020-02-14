@@ -8,9 +8,9 @@
           </h1>
           <span>@yield('deskripsi')</span>
         </div>
-        <div class="float-right mt-4"> @yield('button') </div>
+        <div class="float-right mt-4" id="no-print"> @yield('button') </div>
       </div>
-      <hr>
+      <hr id="no-print">
     </div>
     <div class="pb-4 px-4">
       @if (session('alert'))
