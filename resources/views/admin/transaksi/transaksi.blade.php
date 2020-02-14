@@ -53,90 +53,146 @@
 
     @modal
     @slot('id_modal')
-    ambil-{{$data->id}}
+    detail-{{$data->id}}
     @endslot
-    @slot('modal_title', 'Konfirmasi Pesanan')
-    @slot('modal_submit', 'Konfirmasi')
+    @slot('modal_title', 'Detail Transaksi')
+    @slot('modal_submit', 'Detail')
 
-    @slot('form_action')
-    {{ route('admin.pemesanan.ambil', [$data->id, $data->mobil_id, $data->sopir_id]) }}
-    @endslot
-
-    @csrf @method('patch')
     <ul class="list-group list-group-flush">
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">No Transaksi</div>
         <div class="col" style="font-weight:500">{{ $data->no_transaksi }}</div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Nama Pemesan</div>
         <div class="col" style="font-weight:500">{{ $data->nama }}</div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Mobil</div>
         <div class="col" style="font-weight:500">
           {{ $data->no_plat .' - '. $data->nama_merk .' '. $data->nama_tipe }}
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Sopir</div>
         <div class="col" style="font-weight:500">
           {{ $data->nama_sopir }}
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Tanggal Pesan</div>
         <div class="col" style="font-weight:500">
-          {{ $data->tanggal_pesan->format('d F Y') }}
+          {{ $data->tanggal_pesan }}
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Tanggal Mulai</div>
         <div class="col" style="font-weight:500">
           {{ $data->tanggal_pinjam->format('d F Y') }}
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Tanggal Rencana Pengembalian</div>
         <div class="col" style="font-weight:500">
           {{ $data->tanggal_kembali_rencana->format('d F Y') }}
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Lama Rental</div>
         <div class="col" style="font-weight:500">
           {{ $data->lama_rental }} Hari
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Tanggal Dikembalikan</div>
+        <div class="col" style="font-weight:500">
+          @isset($data->tanggal_kembali_sebenarnya)
+          {{ $data->tanggal_kembali_sebenarnya->format('d F Y') }}
+          @else
+          -
+          @endisset
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Lama Jatuh Tempo</div>
+        <div class="col" style="font-weight:500">
+          {{ $data->lama_denda }} Hari
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Kerusakan</div>
+        <div class="col" style="font-weight:500">
+          {{ $data->kerusakan }}
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Biaya Kerusakan</div>
+        <div class="col" style="font-weight:500">
+          Rp. <span class="uang">{{ $data->biaya_kerusakan }}</span>,-
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Biaya BBM</div>
+        <div class="col" style="font-weight:500">
+          Rp. <span class="uang">{{ $data->biaya_bbm }}</span>,-
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Denda Jatuh Tempo</div>
+        <div class="col" style="font-weight:500">
+          Rp. <span class="uang">{{ $data->biaya_denda }}</span>,-
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Tarif Sopir / Hari</div>
         <div class="col" style="font-weight:500">
           Rp. <span class="uang">{{ $data->tarif_perhari }}</span>,-
         </div>
       </div>
 
-      <div class="row list-group-item">
+      <div class="row list-group-item grey lighten-5">
         <div class="col">Harga Sewa Mobil / Hari</div>
         <div class="col" style="font-weight:500">
           Rp. <span class="uang">{{ $data->harga_sewa }}</span>,-
         </div>
       </div>
 
-      <div class="row list-group-item">
-        <div class="col">Total Bayar Sementara</div>
-        <div class="col" style="font-weight:500">
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Total Bayar</div>
+        <div class="col red-text" style="font-weight:500">
           Rp. <span class="uang">{{ $data->total_bayar }}</span>,-
         </div>
       </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Jumlah Bayar</div>
+        <div class="col text-success" style="font-weight:500">
+          Rp. <span class="uang">{{ $data->jumlah_bayar }}</span>,-
+        </div>
+      </div>
+
+      <div class="row list-group-item grey lighten-5">
+        <div class="col">Kembalian</div>
+        <div class="col text-danger" style="font-weight:500">
+          Rp. <span class="uang">{{ $data->kembali }}</span>,-
+        </div>
+      </div>
+
     </ul>
 
     @endmodal
