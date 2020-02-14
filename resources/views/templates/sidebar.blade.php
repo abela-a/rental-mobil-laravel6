@@ -14,6 +14,9 @@ $transaksi = 'active';
 if(Request::is('*sopir')){
 $sopir = 'active';
 }
+if(Request::is('*laporan')){
+$laporan = 'active';
+}
 if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
 $show_kendaraan = 'show';
 }
@@ -51,19 +54,7 @@ $show_transaksi = 'show';
                 height="45">
               <div class="media-body">
                 <h6 class="my-0">{{ Auth::user()->nama }}</h6>
-                @php
-                if(Auth::user()->role_id === 1){
-                $role = 'Admin';
-                $role_route = 'admin';
-                } elseif(Auth::user()->role_id === 2){
-                $role = 'Karyawan';
-                $role_route = 'karyawan';
-                } else {
-                $role = 'Pelanggan';
-                $role_route = 'pelanggan';
-                }
-                @endphp
-                <span class="badge badge-info">{{ $role }}</span>
+                <span class="badge badge-info">{{ $role_name }}</span>
               </div>
             </div>
           </div>
@@ -84,7 +75,7 @@ $show_transaksi = 'show';
 
     <ul class="list-unstyled components accordion px-4" id="accordion-sidebar">
       <li class="{{ $dashboard ?? '' }}">
-        <a href="{{ route($role_route.'.dashboard') }}">
+        <a href="{{ route($role.'.dashboard') }}">
           <span class="fa fa-fw text-white fa-tachometer-alt mr-3"></span> Dashboard
         </a>
       </li>
@@ -96,13 +87,12 @@ $show_transaksi = 'show';
         </a>
         <ul class="collapse list-unstyled {{ $show_kendaraan ?? '' }}" id="kendaraan" data-parent="#accordion-sidebar">
           <li>
-            <a href="{{ route($role_route.'.merk') }}" class="{{ Request::is('*merk') ? 'text-active' : '' }}">Merk</a>
+            <a href="{{ route($role.'.merk') }}" class="{{ Request::is('*merk') ? 'text-active' : '' }}">Merk</a>
           </li>
           <li>
-            <a href="{{ route($role_route.'.tipe') }}" class="{{ Request::is('*tipe') ? 'text-active' : '' }}">Tipe</a>
+            <a href="{{ route($role.'.tipe') }}" class="{{ Request::is('*tipe') ? 'text-active' : '' }}">Tipe</a>
           </li>
-          <li> <a href="{{ route($role_route.'.mobil') }}"
-              class="{{ Request::is('*mobil') ? 'text-active' : '' }}">Mobil</a>
+          <li> <a href="{{ route($role.'.mobil') }}" class="{{ Request::is('*mobil') ? 'text-active' : '' }}">Mobil</a>
           </li>
         </ul>
       </li>
@@ -110,31 +100,30 @@ $show_transaksi = 'show';
         <a href="#transaksi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span
             class="fa fa-fw text-white fa-dollar-sign mr-3"></span>Transaksi</a>
         <ul class="collapse list-unstyled {{ $show_transaksi ?? '' }}" id="transaksi" data-parent="#accordion-sidebar">
-          <li> <a href="{{ route($role_route.'.pemesanan') }}"
+          <li> <a href="{{ route($role.'.pemesanan') }}"
               class="{{ Request::is('*pemesanan') ? 'text-active' : '' }}">Pemesanan</a> </li>
-          <li> <a href="{{ route($role_route.'.transaksi') }}"
+          <li> <a href="{{ route($role.'.transaksi') }}"
               class="{{ Request::is('*transaksi') ? 'text-active' : '' }}">Transaksi</a> </li>
         </ul>
       </li>
       <li class="{{ $sopir ?? '' }}">
-        <a href="{{ route($role_route.'.sopir') }}"><span class="fa fa-fw text-white fa-user-tie mr-3"></span>Data
+        <a href="{{ route($role.'.sopir') }}"><span class="fa fa-fw text-white fa-user-tie mr-3"></span>Data
           Sopir</a>
       </li>
       <li class="{{ $akun ?? '' }}">
         <a href="#akun" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span
             class="fa fa-fw text-white fa-users mr-3"></span>Data Akun</a>
         <ul class="collapse {{ $show_akun ?? '' }} list-unstyled" id="akun" data-parent="#accordion-sidebar">
-          <li> <a href="{{ route($role_route.'.pelanggan') }}"
+          <li> <a href="{{ route($role.'.pelanggan') }}"
               class="{{ Request::is('*pelanggan') ? 'text-active' : '' }}">Pelanggan</a> </li>
-          <li> <a href="{{ route($role_route.'.karyawan') }}"
+          <li> <a href="{{ route($role.'.karyawan') }}"
               class="{{ Request::is('*karyawan') ? 'text-active' : '' }}">Karyawan</a> </li>
-          <li> <a href="{{ route($role_route.'.role') }}"
-              class="{{ Request::is('*role') ? 'text-active' : '' }}">Manajemen
+          <li> <a href="{{ route($role.'.role') }}" class="{{ Request::is('*role') ? 'text-active' : '' }}">Manajemen
               Akses</a> </li>
         </ul>
       </li>
-      <li>
-        <a href="#"><span class="fa fa-fw text-white fa-print mr-3"></span>Laporan</a>
+      <li class="{{ $laporan ?? '' }}">
+        <a href="{{ route($role.'.laporan') }}"><span class="fa fa-fw text-white fa-print mr-3"></span>Laporan</a>
       </li>
 
       @else
