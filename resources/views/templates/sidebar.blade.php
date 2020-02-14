@@ -1,29 +1,29 @@
 @php
-if(Request::is('admin') || Request::is('karyawan') || Request::is('pelanggan')){
+if(Request::is($role)){
 $dashboard = 'active';
 }
-if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
+if(Request::is($role.'/merk') || Request::is($role.'/tipe') || Request::is($role.'/mobil')){
 $kendaraan = 'active';
 }
-if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
+if(Request::is($role.'/pelanggan') || Request::is($role.'/karyawan') || Request::is($role.'/role')){
 $akun = 'active';
 }
-if(Request::is('*pemesanan') || Request::is('*transaksi*')){
+if(Request::is($role.'/pemesanan') || Request::is($role.'/transaksi*')){
 $transaksi = 'active';
 }
-if(Request::is('*sopir')){
+if(Request::is($role.'/sopir')){
 $sopir = 'active';
 }
-if(Request::is('*laporan')){
+if(Request::is($role.'/laporan*')){
 $laporan = 'active';
 }
-if(Request::is('*merk') || Request::is('*tipe') || Request::is('*mobil')){
+if(Request::is($role.'/merk') || Request::is($role.'/tipe') || Request::is($role.'/mobil')){
 $show_kendaraan = 'show';
 }
-if(Request::is('*pelanggan') || Request::is('*karyawan') || Request::is('*role')){
+if(Request::is($role.'/pelanggan') || Request::is($role.'/karyawan') || Request::is($role.'/role')){
 $show_akun = 'show';
 }
-if(Request::is('*pemesanan') || Request::is('*transaksi')){
+if(Request::is($role.'/pemesanan') || Request::is($role.'/transaksi')){
 $show_transaksi = 'show';
 }
 @endphp
@@ -87,12 +87,13 @@ $show_transaksi = 'show';
         </a>
         <ul class="collapse list-unstyled {{ $show_kendaraan ?? '' }}" id="kendaraan" data-parent="#accordion-sidebar">
           <li>
-            <a href="{{ route($role.'.merk') }}" class="{{ Request::is('*merk') ? 'text-active' : '' }}">Merk</a>
+            <a href="{{ route($role.'.merk') }}" class="{{ Request::is($role.'/merk') ? 'text-active' : '' }}">Merk</a>
           </li>
           <li>
-            <a href="{{ route($role.'.tipe') }}" class="{{ Request::is('*tipe') ? 'text-active' : '' }}">Tipe</a>
+            <a href="{{ route($role.'.tipe') }}" class="{{ Request::is($role.'/tipe') ? 'text-active' : '' }}">Tipe</a>
           </li>
-          <li> <a href="{{ route($role.'.mobil') }}" class="{{ Request::is('*mobil') ? 'text-active' : '' }}">Mobil</a>
+          <li> <a href="{{ route($role.'.mobil') }}"
+              class="{{ Request::is($role.'/mobil') ? 'text-active' : '' }}">Mobil</a>
           </li>
         </ul>
       </li>
@@ -101,9 +102,9 @@ $show_transaksi = 'show';
             class="fa fa-fw text-white fa-dollar-sign mr-3"></span>Transaksi</a>
         <ul class="collapse list-unstyled {{ $show_transaksi ?? '' }}" id="transaksi" data-parent="#accordion-sidebar">
           <li> <a href="{{ route($role.'.pemesanan') }}"
-              class="{{ Request::is('*pemesanan') ? 'text-active' : '' }}">Pemesanan</a> </li>
+              class="{{ Request::is($role.'/pemesanan') ? 'text-active' : '' }}">Pemesanan</a> </li>
           <li> <a href="{{ route($role.'.transaksi') }}"
-              class="{{ Request::is('*transaksi') ? 'text-active' : '' }}">Transaksi</a> </li>
+              class="{{ Request::is($role.'/transaksi') ? 'text-active' : '' }}">Transaksi</a> </li>
         </ul>
       </li>
       <li class="{{ $sopir ?? '' }}">
@@ -115,10 +116,11 @@ $show_transaksi = 'show';
             class="fa fa-fw text-white fa-users mr-3"></span>Data Akun</a>
         <ul class="collapse {{ $show_akun ?? '' }} list-unstyled" id="akun" data-parent="#accordion-sidebar">
           <li> <a href="{{ route($role.'.pelanggan') }}"
-              class="{{ Request::is('*pelanggan') ? 'text-active' : '' }}">Pelanggan</a> </li>
+              class="{{ Request::is($role.'/pelanggan') ? 'text-active' : '' }}">Pelanggan</a> </li>
           <li> <a href="{{ route($role.'.karyawan') }}"
-              class="{{ Request::is('*karyawan') ? 'text-active' : '' }}">Karyawan</a> </li>
-          <li> <a href="{{ route($role.'.role') }}" class="{{ Request::is('*role') ? 'text-active' : '' }}">Manajemen
+              class="{{ Request::is($role.'/karyawan') ? 'text-active' : '' }}">Karyawan</a> </li>
+          <li> <a href="{{ route($role.'.role') }}"
+              class="{{ Request::is($role.'/role') ? 'text-active' : '' }}">Manajemen
               Akses</a> </li>
         </ul>
       </li>

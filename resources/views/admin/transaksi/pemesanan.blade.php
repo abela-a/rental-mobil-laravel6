@@ -56,7 +56,7 @@
           <i class="fa fa-bars fa-fw" aria-hidden="true"></i> Pilihan
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">Cetak</a>
+          <a class="dropdown-item" href="{{ route($role.'.laporan.kwitansi', $data->id) }}">Cetak</a>
 
           <button class="dropdown-item {{ $data->status_transaksi != 'Proses' ? 'disabled' : '' }}" data-toggle="modal"
             data-target="#batal-{{ $data->id }}">Batalkan</button>
@@ -268,19 +268,9 @@
   <div id="show-sopir" class="d-none">
     <div class="form-group">
       <select class="browser-default custom-select" name="sopir_id" id="sopir-id">
-        @foreach ($sopir as $s)
-        @if ($s->id === 1))
-        <option value="{{ $s->id }}" harga="{{ $s->tarif_perhari }}">
-          @if ($s->id === 1)
-          Pilih Sopir
-          @else
-          {{ $s->nama_sopir }}
-          @endif
-        </option>
-        @else
         <option value="1" harga="0">Pilih Sopir</option>
-        <option value="{{ $s->id }}" harga="{{ $s->tarif_perhari }}">{{ $s->nama_sopir }}</option>
-        @endif
+        @foreach ($sopir as $s)
+        <option value="{{ $s->id }}" harga="{{ $s->tarif_perhari }}"> {{ $s->nama_sopir }} </option>
         @endforeach
       </select>
     </div>

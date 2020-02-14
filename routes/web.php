@@ -84,7 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('sopir', 'LaporanController@sopir')->name('admin.laporan.sopir');
     Route::get('karyawan', 'LaporanController@karyawan')->name('admin.laporan.karyawan');
     Route::get('pelanggan', 'LaporanController@pelanggan')->name('admin.laporan.pelanggan');
-    Route::get('kwitansi/{no_transaksi}', 'LaporanController@kwitansi')->name('admin.laporan.kwitansi');
+    Route::get('kwitansi/{kwitansi}', 'LaporanController@kwitansi')->name('admin.laporan.kwitansi');
   });
 });
 

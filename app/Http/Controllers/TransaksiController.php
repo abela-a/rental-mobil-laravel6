@@ -17,7 +17,7 @@ class TransaksiController extends Controller
     {
         $pelanggan = User::where('role_id', 3)->get();
         $mobil = ViewMobil::where('status_rental', 'Kosong')->get();
-        $sopir = Sopir::where('status_sopir', 'Luang')->get();
+        $sopir = Sopir::where('status_sopir', 'Luang')->where('id', '!=', 1)->get();
         $pemesanan = ViewTransaksi::where('status_transaksi', '!=', 'Selesai')
             ->where('status_transaksi', '!=', 'Batal')->get();
         return view('admin.transaksi.pemesanan', compact('pelanggan', 'mobil', 'sopir', 'pemesanan'));

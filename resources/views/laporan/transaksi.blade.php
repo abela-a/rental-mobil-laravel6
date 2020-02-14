@@ -9,6 +9,7 @@
 
 @section('content')
 @include('laporan.head')
+<h2 class="text-center mb-3 d-none" id="print">Laporan Transaksi</h2>
 @include('laporan.nav')
 
 <div class="table-responsive">

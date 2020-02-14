@@ -1,4 +1,3 @@
-<h2 class="text-center mb-3 d-none" id="print">Laporan Transaksi</h2>
 <div id="no-print">
   <ul class="nav nav-pills">
     <li class="nav-item">

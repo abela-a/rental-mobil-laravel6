@@ -40,7 +40,7 @@
       <td>{{ $data->lama_rental }} Hari</td>
       <td>Rp. <span class="uang">{{ $data->total_bayar }}</span>,-</td>
       <td class="action-td">
-        <a href="#">
+        <a href="{{ route($role.'.laporan.kwitansi', $data->id) }}">
           <button class="btn btn-sm btn-info text-white">
             <i class=" fa fa-print fa-fw"></i>
           </button>
