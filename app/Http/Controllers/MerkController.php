@@ -19,17 +19,17 @@ class MerkController extends Controller
             'nama_merk' => 'required'
         ]);
         Merk::create($request->all());
-        return redirect('admin/merk')->with('alert', 'Data merk berhasil ditambahkan!');
+        return redirect()->back()->with('alert', 'Data merk berhasil ditambahkan!');
     }
     public function update(Request $request, Merk $merk)
     {
         $request->validate(['nama_merk' => 'required']);
         Merk::where('id', $merk->id)->update(['nama_merk' => $request->nama_merk]);
-        return redirect('admin/merk')->with('alert', 'Data merk berhasil diubah!');
+        return redirect()->back()->with('alert', 'Data merk berhasil diubah!');
     }
     public function destroy(Merk $merk)
     {
         Merk::destroy('id', $merk->id);
-        return redirect('admin/merk')->with('alert', 'Data merk berhasil dihapus!');
+        return redirect()->back()->with('alert', 'Data merk berhasil dihapus!');
     }
 }

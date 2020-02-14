@@ -10,6 +10,7 @@ use App\ViewMobil;
 use App\ViewTransaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -89,6 +90,12 @@ class TransaksiController extends Controller
     }
     public function transaksiSelesai(Request $request, Transaksi $transaksi)
     {
+        if (Auth::user()->role_id === 1) {
+            $role = 'admin';
+        } else {
+            $role = 'karyawan';
+        }
+
         Transaksi::where('id', $transaksi->id)->update([
             'tanggal_kembali_sebenarnya' => date('Y-m-d'),
             'lama_denda' => $request->lama_denda,
@@ -105,6 +112,6 @@ class TransaksiController extends Controller
         Mobil::where('id', $request->mobil_id)->update(['status_rental' => 'Kosong']);
         Sopir::where('id', $request->sopir_id)->update(['status_sopir' => 'Luang']);
 
-        return redirect('admin/transaksi')->with('alert', 'Rental telah selesai!');
+        return redirect($role . '/transaksi')->with('alert', 'Rental telah selesai!');
     }
 }

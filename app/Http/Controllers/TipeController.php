@@ -24,7 +24,7 @@ class TipeController extends Controller
         ]);
 
         Tipe::create($request->all());
-        return redirect('admin/tipe')->with('alert', 'Data tipe berhasil ditambahkan!');
+        return redirect()->back()->with('alert', 'Data tipe berhasil ditambahkan!');
     }
     public function update(Request $request, Tipe $tipe)
     {
@@ -32,11 +32,11 @@ class TipeController extends Controller
             'nama_tipe' => 'required'
         ]);
         Tipe::where('id', $tipe->id)->update(['nama_tipe' => $request->nama_tipe]);
-        return redirect('admin/tipe')->with('alert', 'Data tipe berhasil diubah!');
+        return redirect()->back()->with('alert', 'Data tipe berhasil diubah!');
     }
     public function destroy(Tipe $tipe)
     {
         Tipe::destroy($tipe->id);
-        return redirect('admin/tipe')->with('alert', 'Data tipe berhasil dihapus!');
+        return redirect()->back()->with('alert', 'Data tipe berhasil dihapus!');
     }
 }

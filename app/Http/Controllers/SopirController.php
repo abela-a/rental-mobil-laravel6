@@ -47,7 +47,7 @@ class SopirController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'status_sopir' => 'Luang'
         ]);
-        return redirect('admin/sopir')->with('alert', 'Data sopir berhasil ditambahkan!');
+        return redirect()->back()->with('alert', 'Data sopir berhasil ditambahkan!');
     }
     public function update(Request $request, Sopir $sopir)
     {
@@ -61,11 +61,11 @@ class SopirController extends Controller
             'alamat' => $request->alamat,
             'tarif_perhari' => preg_replace('/\D/', '', $request->tarif_perhari),
         ]);
-        return redirect('admin/sopir')->with('alert', 'Data sopir berhasil diubah!');
+        return redirect()->back()->with('alert', 'Data sopir berhasil diubah!');
     }
     public function destroy(Sopir $sopir)
     {
         Sopir::destroy('id', $sopir->id);
-        return redirect('admin/sopir')->with('alert', 'Data sopir berhasil dihapus!');
+        return redirect()->back()->with('alert', 'Data sopir berhasil dihapus!');
     }
 }

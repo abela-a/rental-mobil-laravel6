@@ -51,7 +51,7 @@ class MobilController extends Controller
             'foto_mobil' => $foto_mobil,
             'status_rental' => 'Kosong'
         ]);
-        return redirect('admin/mobil')->with('alert', 'Data mobil berhasil ditambahkan!');
+        return redirect()->back()->with('alert', 'Data mobil berhasil ditambahkan!');
     }
     public function update(Request $request, Mobil $mobil)
     {
@@ -73,12 +73,12 @@ class MobilController extends Controller
             'harga_sewa' => preg_replace('/\D/', '', $request->harga_sewa),
             'foto_mobil' => $foto_mobil
         ]);
-        return redirect('admin/mobil')->with('alert', 'Data mobil berhasil diubah!');
+        return redirect()->back()->with('alert', 'Data mobil berhasil diubah!');
     }
     public function destroy(Mobil $mobil)
     {
         Mobil::destroy('id', $mobil->id);
         File::delete($this->path . '/' . $mobil->foto_mobil);
-        return redirect('admin/mobil')->with('alert', 'Data mobil berhasil dihapus!');
+        return redirect()->back()->with('alert', 'Data mobil berhasil dihapus!');
     }
 }
