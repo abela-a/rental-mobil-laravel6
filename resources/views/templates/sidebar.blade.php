@@ -62,7 +62,7 @@ $show_transaksi = 'show';
         <div class="collapse list-unstyled px-2" id="profile" data-parent="#accordion-sidebar">
           <div class="row no-gutters mt-2">
             <div class="col mr-1">
-              <button class="btn btn-sm btn-primary btn-block">Edit</button>
+              <a class="btn btn-sm btn-primary btn-block" href="{{ route($role.'.profile') }}">Edit</a>
             </div>
             <div class="col">
               <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display:none">@csrf</form>

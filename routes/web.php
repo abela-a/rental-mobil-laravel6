@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
   // PROFILE
   Route::get('', 'AdminMasterController@index')->name('admin.dashboard');
   Route::get('profile', 'AdminMasterController@profile')->name('admin.profile');
+  Route::patch('profile/{user}', 'AdminMasterController@profile_update')->name('admin.profile.update');
   // MERK
   Route::group(['prefix' => 'merk'], function () {
     Route::get('', 'MerkController@index')->name('admin.merk');
