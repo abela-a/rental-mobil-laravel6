@@ -5,7 +5,8 @@
 @section('deskripsi', 'Menampilkan daftar pelanggan.')
 
 @section('button')
-<button class="btn btn-primary" data-target="#input" data-toggle="modal"><i class="fas fa-plus fa-fw"></i></button>
+<button class="btn btn-primary" data-target="#input" data-toggle="modal"><i class="fas fa-plus fa-fw mr-2"></i>Tambah
+  Pelanggan</button>
 @endsection
 
 @section('content')

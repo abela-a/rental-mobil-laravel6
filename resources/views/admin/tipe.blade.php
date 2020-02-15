@@ -5,7 +5,8 @@
 @section('deskripsi', 'Menampilkan daftar tipe mobil.')
 
 @section('button')
-<button class="btn btn-primary" data-target="#input" data-toggle="modal"><i class="fas fa-plus fa-fw"></i></button>
+<button class="btn btn-primary" data-target="#input" data-toggle="modal"><i class="fas fa-plus fa-fw mr-2"></i>Tambah
+  Tipe</button>
 @endsection
 
 @section('content')
